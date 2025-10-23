@@ -2,9 +2,9 @@ const Request = require('../models/Request');
 const User = require('../models/User');
 const { sendNewRequestNotification } = require('../utils/sendEmail');
 
-// @desc    Create new client request
-// @route   POST /api/requests
-// @access  Public
+// Create new client request
+// POST /api/requests
+// Public
 const createRequest = async (req, res) => {
   try {
     const { 
@@ -61,9 +61,9 @@ const createRequest = async (req, res) => {
   }
 };
 
-// @desc    Get all requests
-// @route   GET /api/requests
-// @access  Private/Admin
+// Get all requests
+// GET /api/requests
+// Private/Admin
 const getRequests = async (req, res) => {
   try {
     const { status, page = 1, limit = 10 } = req.query;
@@ -94,9 +94,9 @@ const getRequests = async (req, res) => {
   }
 };
 
-// @desc    Get single request
-// @route   GET /api/requests/:id
-// @access  Private/Admin
+// Get single request
+// GET /api/requests/:id
+// Private/Admin
 const getRequest = async (req, res) => {
   try {
     const request = await Request.findById(req.params.id)
@@ -116,9 +116,9 @@ const getRequest = async (req, res) => {
   }
 };
 
-// @desc    Update request status
-// @route   PUT /api/requests/:id
-// @access  Private/Admin
+// Update request status
+// PUT /api/requests/:id
+// Private/Admin
 const updateRequest = async (req, res) => {
   try {
     const { status, adminNotes } = req.body;
@@ -144,9 +144,9 @@ const updateRequest = async (req, res) => {
   }
 };
 
-// @desc    Delete request
-// @route   DELETE /api/requests/:id
-// @access  Private/Admin
+// Delete request
+// DELETE /api/requests/:id
+// Private/Admin
 const deleteRequest = async (req, res) => {
   try {
     const request = await Request.findById(req.params.id);

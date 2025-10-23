@@ -8,8 +8,8 @@ const {
   getAllUshers,
   updateUsher,
   deleteUsher,
-  toggleUsherVisibility,    // ADD THIS
-  rejectProfilePicture      // ADD THIS
+  toggleUsherVisibility,
+  rejectProfilePicture
 } = require('../controllers/adminController');
 const { authenticateToken, requireAdmin } = require('../middleware/auth');
 
@@ -28,7 +28,7 @@ router.delete('/codes/:id', deleteSignupCode);
 router.get('/ushers', getAllUshers);
 router.put('/ushers/:id', updateUsher);
 router.delete('/ushers/:id', deleteUsher);
-router.patch('/ushers/:id/toggle-visibility', toggleUsherVisibility);  // ADD THIS
-router.patch('/ushers/:usherId/reject-picture', rejectProfilePicture); // ADD THIS
+router.patch('/ushers/:id/toggle-visibility', toggleUsherVisibility);  
+router.patch('/ushers/:usherId/reject-picture', rejectProfilePicture); 
 
 module.exports = router;

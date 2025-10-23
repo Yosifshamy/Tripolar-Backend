@@ -1,9 +1,9 @@
 const User = require('../models/User');
 const { uploadImage } = require('../utils/cloudinary');
 
-// @desc    Get all active ushers
-// @route   GET /api/ushers
-// @access  Public
+// Get all active ushers
+// GET /api/ushers
+// Public
 const getUshers = async (req, res) => {
   try {
     const ushers = await User.find({ 
@@ -24,9 +24,9 @@ const getUshers = async (req, res) => {
   }
 };
 
-// @desc    Get single usher
-// @route   GET /api/ushers/:id
-// @access  Public
+// Get single usher
+// GET /api/ushers/:id
+// Public
 const getUsher = async (req, res) => {
   try {
     const usher = await User.findOne({ 
@@ -50,9 +50,9 @@ const getUsher = async (req, res) => {
   }
 };
 
-// @desc    Update usher own profile
-// @route   PUT /api/ushers/profile
-// @access  Private/Usher
+// Update usher own profile
+// PUT /api/ushers/profile
+// Private/Usher
 const updateUsherProfile = async (req, res) => {
   try {
     const { name, profile } = req.body;
@@ -88,9 +88,9 @@ const updateUsherProfile = async (req, res) => {
   }
 };
 
-// @desc    Upload usher profile image
-// @route   POST /api/ushers/profile/image
-// @access  Private/Usher
+// Upload usher profile image
+// POST /api/ushers/profile/image
+// Private/Usher
 const uploadProfileImage = async (req, res) => {
   try {
     if (!req.file) {

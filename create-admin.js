@@ -35,7 +35,7 @@ const createAdminUser = async () => {
     const admin = new User({
       name: 'Admin User',
       email: 'admin@bipolar.com',
-      password: plainPass,  // Plain - hook hashes
+      password: plainPass,
       role: 'admin',
       isActive: true,
       profile: { bio: 'Admin', availability: true }

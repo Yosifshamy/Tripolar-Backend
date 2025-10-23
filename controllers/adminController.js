@@ -1,11 +1,11 @@
 const User = require('../models/User');
 const SignupCode = require('../models/SignupCode');
-const Event = require('../models/Event'); // If you have events
+const Event = require('../models/Event');
 const fs = require('fs');
 const path = require('path');
 
-// @desc Get dashboard statistics
-// @route GET /api/admin/dashboard
+// Get dashboard statistics
+// GET /api/admin/dashboard
 const getDashboardStats = async (req, res) => {
   try {
     console.log('📊 Fetching dashboard stats for admin:', req.user.email);
@@ -59,8 +59,8 @@ const getDashboardStats = async (req, res) => {
   }
 };
 
-// @desc Generate new signup code
-// @route POST /api/admin/codes/generate
+// Generate new signup code
+// POST /api/admin/codes/generate
 const generateSignupCode = async (req, res) => {
   try {
     console.log('🔑 Generating signup code by admin:', req.user.email);
@@ -109,8 +109,8 @@ const generateSignupCode = async (req, res) => {
   }
 };
 
-// @desc Get all signup codes
-// @route GET /api/admin/codes
+// Get all signup codes
+// GET /api/admin/codes
 const getSignupCodes = async (req, res) => {
   try {
     console.log('📋 Fetching signup codes for admin:', req.user.email);
@@ -137,8 +137,8 @@ const getSignupCodes = async (req, res) => {
   }
 };
 
-// @desc Delete signup code
-// @route DELETE /api/admin/codes/:id
+// Delete signup code
+// DELETE /api/admin/codes/:id
 const deleteSignupCode = async (req, res) => {
   try {
     const codeId = req.params.id;
@@ -179,15 +179,15 @@ const deleteSignupCode = async (req, res) => {
   }
 };
 
-// @desc Get all ushers
-// @route GET /api/admin/ushers
+// Get all ushers
+// GET /api/admin/ushers
 const getAllUshers = async (req, res) => {
   try {
     console.log('👥 Fetching all ushers for admin:', req.user.email);
 
     const { page = 1, limit = 10, search = '' } = req.query;
 
-    const query = { role: 'usher' }; // REMOVED isActive filter to show all ushers
+    const query = { role: 'usher' };
 
     if (search) {
       query.$or = [
@@ -229,8 +229,8 @@ const getAllUshers = async (req, res) => {
   }
 };
 
-// @desc Update usher
-// @route PUT /api/admin/ushers/:id
+// Update usher
+// PUT /api/admin/ushers/:id
 const updateUsher = async (req, res) => {
   try {
     const usherId = req.params.id;
@@ -287,8 +287,8 @@ const updateUsher = async (req, res) => {
   }
 };
 
-// @desc Delete/deactivate usher
-// @route DELETE /api/admin/ushers/:id
+// Delete/deactivate usher
+// DELETE /api/admin/ushers/:id
 const deleteUsher = async (req, res) => {
   try {
     const usherId = req.params.id;
@@ -323,8 +323,8 @@ const deleteUsher = async (req, res) => {
   }
 };
 
-// NEW: Toggle usher visibility on website
-// @route PATCH /api/admin/ushers/:id/toggle-visibility
+// Toggle usher visibility on website
+// PATCH /api/admin/ushers/:id/toggle-visibility
 const toggleUsherVisibility = async (req, res) => {
   try {
     const { id } = req.params;
@@ -366,8 +366,8 @@ const toggleUsherVisibility = async (req, res) => {
   }
 };
 
-// NEW: Reject usher profile picture
-// @route PATCH /api/admin/ushers/:usherId/reject-picture
+// Reject usher profile picture
+// PATCH /api/admin/ushers/:usherId/reject-picture
 const rejectProfilePicture = async (req, res) => {
   try {
     const { usherId } = req.params;
@@ -442,6 +442,6 @@ module.exports = {
   getAllUshers,
   updateUsher,
   deleteUsher,
-  toggleUsherVisibility, // ADDED
-  rejectProfilePicture // ADDED
+  toggleUsherVisibility, 
+  rejectProfilePicture 
 };

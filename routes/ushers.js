@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     const ushers = await User.find({ 
       role: 'usher', 
       isActive: true,
-      isVisibleOnWebsite: true  // NEW: Only show visible ushers
+      isVisibleOnWebsite: true
     })
       .select('-password')
       .populate('signupCode', 'code');
@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
       _id: req.params.id,
       role: 'usher',
       isActive: true,
-      isVisibleOnWebsite: true  // NEW: Only show if visible
+      isVisibleOnWebsite: true
     })
       .select('-password')
       .populate('signupCode', 'code');
@@ -49,7 +49,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// PUT /api/ushers/:id - Update usher (admin only) - EXISTING, NO CHANGES
+// PUT /api/ushers/:id - Update usher (admin only)
 router.put('/:id', authenticateToken, [
   body('name').optional().isLength({ min: 2, max: 50 }).trim(),
   body('profile.bio').optional().isLength({ max: 500 }).trim()
@@ -77,7 +77,7 @@ router.put('/:id', authenticateToken, [
   }
 });
 
-// DELETE /api/ushers/:id - Delete usher (admin only) - EXISTING, NO CHANGES
+// DELETE /api/ushers/:id - Delete usher (admin only)
 router.delete('/:id', authenticateToken, async (req, res) => {
   if (req.user.role !== 'admin') {
     return res.status(403).json({ success: false, message: 'Admin access required' });
@@ -85,7 +85,7 @@ router.delete('/:id', authenticateToken, async (req, res) => {
   try {
     const usher = await User.findByIdAndUpdate(
       req.params.id,
-      { isActive: false },  // Soft delete
+      { isActive: false },
       { new: true }
     );
     if (!usher || usher.role !== 'usher') {
@@ -98,7 +98,7 @@ router.delete('/:id', authenticateToken, async (req, res) => {
   }
 });
 
-// GET /api/ushers/profile/me - EXISTING, NO CHANGES
+// GET /api/ushers/profile/me
 router.get('/profile/me', authenticateToken, async (req, res) => {
   if (req.user.role !== 'usher') {
     return res.status(403).json({ success: false, message: 'Usher access required' });
@@ -112,7 +112,7 @@ router.get('/profile/me', authenticateToken, async (req, res) => {
   }
 });
 
-// PUT /api/ushers/profile/me - EXISTING, NO CHANGES
+// PUT /api/ushers/profile/me
 router.put('/profile/me', authenticateToken, [
   body('name').optional().isLength({ min: 2, max: 50 }).trim(),
   body('profile.bio').optional().isLength({ max: 500 }).trim(),

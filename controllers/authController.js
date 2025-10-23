@@ -11,9 +11,9 @@ const generateToken = (id) => {
   });
 };
 
-// @desc    Login user (admin or usher)
-// @route   POST /api/auth/login
-// @access  Public
+// Login user (admin or usher)
+// POST /api/auth/login
+// Public
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -61,9 +61,9 @@ const login = async (req, res) => {
   }
 };
 
-// @desc    Register new usher with signup code and profile picture
-// @route   POST /api/auth/register
-// @access  Public
+// Register new usher with signup code and profile picture
+// POST /api/auth/register
+// Public
 const register = async (req, res) => {
   try {
     const { name, email, password, signupCode } = req.body;
@@ -174,9 +174,9 @@ const register = async (req, res) => {
   }
 };
 
-// @desc    Get current user
-// @route   GET /api/auth/me
-// @access  Private
+// Get current user
+// GET /api/auth/me
+// Private
 const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
@@ -195,9 +195,9 @@ const getMe = async (req, res) => {
   }
 };
 
-// @desc    Logout user (client-side token removal)
-// @route   POST /api/auth/logout
-// @access  Private
+// Logout user (client-side token removal)
+// POST /api/auth/logout
+// Private
 const logout = async (req, res) => {
   try {
     res.json({
@@ -210,9 +210,9 @@ const logout = async (req, res) => {
   }
 };
 
-// @desc    Update user profile
-// @route   PUT /api/auth/profile
-// @access  Private
+// Update user profile
+// PUT /api/auth/profile
+// Private
 const updateProfile = async (req, res) => {
   try {
     const { name, profile } = req.body;
