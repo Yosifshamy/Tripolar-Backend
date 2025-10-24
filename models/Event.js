@@ -45,7 +45,7 @@ const eventSchema = new mongoose.Schema({
     ref: 'User'
   }],
   images: [{
-    type: String  // URLs of event images
+    type: String
   }],
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,

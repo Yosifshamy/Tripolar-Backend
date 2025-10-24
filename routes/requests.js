@@ -45,7 +45,7 @@ const getAllRequests = async (req, res) => {
   try {
     const requests = await Request.find()
       .populate('selectedUshers', 'name email profile')
-      .sort({ createdAt: -1 }); // Newest first
+      .sort({ createdAt: -1 });
 
     console.log(`✅ Found ${requests.length} requests in database`);
 

@@ -16,7 +16,7 @@ const authenticateToken = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_jwt_secret_key');
     const user = await User.findById(decoded.id).select('-password');
     
-    if (!user || !user.isActive) {  // Check if user is active
+    if (!user || !user.isActive) {
       return res.status(401).json({ 
         success: false, 
         message: 'Token is not valid or user is deactivated' 

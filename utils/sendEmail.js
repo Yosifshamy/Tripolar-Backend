@@ -13,9 +13,9 @@ const sendWelcomeEmail = async (user) => {
 
     // Send test email
     await transporter.sendMail({
-      from: '"Bipolar Usher" <noreply@bipolar.com>',
+      from: '"Tripolar Usher" <noreply@tripolar.com>',
       to: user.email,
-      subject: 'Welcome to Bipolar Ushers!',
+      subject: 'Welcome to Tripolar Ushers!',
       html: `
         <h1>Welcome ${user.name}!</h1>
         <p>Your account has been created successfully.</p>
@@ -29,7 +29,6 @@ const sendWelcomeEmail = async (user) => {
     console.log(`✅ Welcome email sent to ${user.email}`);
   } catch (error) {
     console.warn('⚠️ Failed to send welcome email:', error.message);
-    // Don't throw - registration should succeed even if email fails
   }
 };
 

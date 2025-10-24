@@ -36,8 +36,6 @@ const validateUsherRegistration = [
   body('password')
     .isLength({ min: 6, max: 128 })
     .withMessage('Password must be between 6 and 128 characters'),
-    // REMOVED: .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)/)
-    // Now just needs to be 6+ characters
   body('signupCode')
     .isLength({ min: 6, max: 10 })
     .withMessage('Signup code must be between 6 and 10 characters')
